@@ -7,6 +7,7 @@ raspi.init(() => {
   servo3 = new pwm.SoftPWM('GPIO23');
   servo4 = new pwm.SoftPWM('GPIO24');
   cycleServos();
+  console.log(servo1)
 });
 
 function cycleServos() {
