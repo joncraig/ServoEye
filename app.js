@@ -1,5 +1,5 @@
 const Gpio = require('pigpio').Gpio;
-const motor = new Gpio(11, {
+const motor = new Gpio('GPIO22', {
   mode: Gpio.OUTPUT
 });
 let pulseWidth = 1000;
@@ -13,7 +13,7 @@ console.log(pulseWidth);
   } else if (pulseWidth <= 1000) {
     increment = 100;
   }
-}, 1000);
+}, 100);
 // const raspi = require('raspi');
 // const pwm = require('raspi-soft-pwm');
 // let servo1,servo2,servo3,servo4;
