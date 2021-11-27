@@ -2,18 +2,26 @@ const Gpio = require('pigpio').Gpio;
 const motor = new Gpio(17, {
   mode: Gpio.OUTPUT
 });
+const motor = new Gpio(18, {
+  mode: Gpio.OUTPUT
+});
+const motor = new Gpio(19, {
+  mode: Gpio.OUTPUT
+});
 let pulseWidth = 1000;
 let increment = 100;
 setInterval(() => {
 console.log(pulseWidth);
-  motor.servoWrite(pulseWidth);
+motor17.servoWrite(pulseWidth);
+motor18.servoWrite(pulseWidth);
+motor19.servoWrite(pulseWidth);
   pulseWidth += increment;
   if (pulseWidth >= 2000) {
     increment = -100;
   } else if (pulseWidth <= 1000) {
     increment = 100;
   }
-}, 100);
+}, 10);
 // const raspi = require('raspi');
 // const pwm = require('raspi-soft-pwm');
 // let servo1,servo2,servo3,servo4;
