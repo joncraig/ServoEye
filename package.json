@@ -1,0 +1,20 @@
+{
+  "name": "ServoEye",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joncraig/ServoEye.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joncraig/ServoEye/issues"
+  },
+  "homepage": "https://github.com/joncraig/ServoEye#readme"
+}
