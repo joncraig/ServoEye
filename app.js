@@ -34,11 +34,11 @@ function angleToPercent(angle) {
 var curAngle = 0;
 var direction = 1;
 setInterval(() => {
-  piblaster.setServoPwm("GPIO17", angleToPercent(curAngle) + "%");
-  piblaster.setServoPwm("GPIO22", angleToPercent(curAngle) + "%");
-  piblaster.setServoPwm("GPIO23", angleToPercent(curAngle) + "%");
-  piblaster.setServoPwm("GPIO24", angleToPercent(curAngle) + "%");
-  console.log("Setting angle at: ", curAngle, angleToPercent(curAngle));
+  piblaster.set("GPIO17", angleToPercent(curAngle)/100.0);
+  piblaster.set("GPIO22", angleToPercent(curAngle)/100.0);
+  piblaster.set("GPIO23", angleToPercent(curAngle)/100.0);
+  piblaster.set("GPIO24", angleToPercent(curAngle)/100.0);
+  console.log("Setting angle at: ", curAngle, angleToPercent(curAngle) + "%");
   curAngle += direction;
   // Change direction when it exceeds the max angle.
   if (curAngle >= 180) {
