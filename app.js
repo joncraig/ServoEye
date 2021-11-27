@@ -25,8 +25,8 @@
 //     setTimeout(cycleServos, 2000);
 //   }, 2000)
 // }
-var piblaster = require('pi-servo-blaster.js');
-
+// var piblaster = require('pi-servo-blaster.js');
+var piblaster = require('pi-blaster.js');
 function angleToPercent(angle) {
   return Math.floor((angle/180) * 100);
 }
