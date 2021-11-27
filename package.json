@@ -8,7 +8,7 @@
   "main": "app.js",
   "devDependencies": {},
   "scripts": {
-    "start": "sudo node app.js"
+    "start": "sudo $(which node) app.js"
   },
   "repository": {
     "type": "git",

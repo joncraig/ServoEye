@@ -1,6 +1,6 @@
 
 const pigpio = require('bindings')('pigpio.node');
-const Gpio = pigpio.Gpio;
+const Gpio = pigpi.Gpio;
 
 const motor = new Gpio(11, {mode: Gpio.OUTPUT});
 
