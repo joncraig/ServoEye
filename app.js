@@ -1,49 +1,30 @@
-const raspi = require('raspi');
-const pwm = require('raspi-soft-pwm');
-let servo1,servo2,servo3,servo4;
-raspi.init(() => {
-  servo1 = new pwm.SoftPWM(11);
-  servo2 = new pwm.SoftPWM('GPIO22');
-  servo3 = new pwm.SoftPWM('GPIO23');
-  servo4 = new pwm.SoftPWM('GPIO24');
-  cycleServos();
-  console.log(servo1)
-});
+const Gpio = require('pigpio').Gpio;
 
-function cycleServos() {
-console.log(0);
-servo1.write(0);
-servo2.write(0);
-servo3.write(0);
-servo4.write(0);
-  setTimeout(() => {
-    console.log(1);
-    servo1.write(1);
-    servo2.write(1);
-    servo3.write(1);
-    servo4.write(1);
-    setTimeout(cycleServos, 2000);
-  }, 2000)
-}
-// var piblaster = require('pi-servo-blaster.js');
-// var piblaster = require('pi-blaster.js');
-// function angleToPercent(angle) {
-//   return Math.floor((angle/180) * 100);
-// }
-//
-// var curAngle = 0;
-// var direction = 1;
-// setInterval(() => {
-//   piblaster.setPwm(11, angleToPercent(curAngle)/100.0);
-//   piblaster.setPwm(15, angleToPercent(curAngle)/100.0);
-//   piblaster.setPwm(16, angleToPercent(curAngle)/100.0);
-//   piblaster.setPwm(18, angleToPercent(curAngle)/100.0);
-//   console.log("Setting angle at: ", curAngle, angleToPercent(curAngle) + "%");
-//   curAngle += direction;
-//   // Change direction when it exceeds the max angle.
-//   if (curAngle >= 180) {
-//     direction = -1;
-//   } else if (curAngle <= 0) {
-//     direction = 1;
-//   }
-// }, 10);
+// The number of microseconds it takes sound to travel 1cm at 20 degrees celcius
+const MICROSECDONDS_PER_CM = 1e6/34321;
+
+const trigger = new Gpio(23, {mode: Gpio.OUTPUT});
+const echo = new Gpio(24, {mode: Gpio.INPUT, alert: true});
+
+trigger.digitalWrite(0); // Make sure trigger is low
+
+const watchHCSR04 = () => {
+  let startTick;
+
+  echo.on('alert', (level, tick) => {
+    if (level == 1) {
+      startTick = tick;
+    } else {
+      const endTick = tick;
+      const diff = (endTick >> 0) - (startTick >> 0); // Unsigned 32 bit arithmetic
+      console.log(diff / 2 / MICROSECDONDS_PER_CM);
+    }
+  });
+};
+
+watchHCSR04();
+
+// Trigger a distance measurement once per second
+setInterval(() => {
+  trigger.trigger(10, 1); // Set trigger high for 10 microseconds
+}, 1000);
