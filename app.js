@@ -1,35 +1,53 @@
-const raspi = require('raspi');
-const pwm = require('raspi-soft-pwm');
-let servo1,servo2,servo3,servo4;
-raspi.init(() => {
-  servo1 = new pwm.SoftPWM('GPIO17');
-  servo2 = new pwm.SoftPWM('GPIO22');
-  servo3 = new pwm.SoftPWM('GPIO23');
-  servo4 = new pwm.SoftPWM('GPIO24');
-  servo1.write(0.5);
-  servo2.write(0.5);
-  servo3.write(0.5);
-  servo4.write(0.5);
 
-  cycleServos();
-  console.log(servo1)
-});
+const Gpio = require('pigpio').Gpio;
 
-function cycleServos() {
-console.log(0);
-servo1.write(0);
-servo2.write(0);
-servo3.write(0);
-servo4.write(0);
-  setTimeout(() => {
-    console.log(1);
-    servo1.write(1);
-    servo2.write(1);
-    servo3.write(1);
-    servo4.write(1);
-    setTimeout(cycleServos, 2000);
-  }, 2000)
-}
+const motor = new Gpio(11, {mode: Gpio.OUTPUT});
+
+let pulseWidth = 1000;
+let increment = 100;
+
+setInterval(() => {
+  motor.servoWrite(pulseWidth);
+
+  pulseWidth += increment;
+  if (pulseWidth >= 2000) {
+    increment = -100;
+  } else if (pulseWidth <= 1000) {
+    increment = 100;
+  }
+}, 1000);
+// const raspi = require('raspi');
+// const pwm = require('raspi-soft-pwm');
+// let servo1,servo2,servo3,servo4;
+// raspi.init(() => {
+//   servo1 = new pwm.SoftPWM('GPIO17');
+//   servo2 = new pwm.SoftPWM('GPIO22');
+//   servo3 = new pwm.SoftPWM('GPIO23');
+//   servo4 = new pwm.SoftPWM('GPIO24');
+//   servo1.write(0.5);
+//   servo2.write(0.5);
+//   servo3.write(0.5);
+//   servo4.write(0.5);
+//
+//   cycleServos();
+//   console.log(servo1)
+// });
+//
+// function cycleServos() {
+// console.log(0);
+// servo1.write(0);
+// servo2.write(0);
+// servo3.write(0);
+// servo4.write(0);
+//   setTimeout(() => {
+//     console.log(1);
+//     servo1.write(1);
+//     servo2.write(1);
+//     servo3.write(1);
+//     servo4.write(1);
+//     setTimeout(cycleServos, 2000);
+//   }, 2000)
+// }
 // var piblaster = require('pi-servo-blaster.js');
 // var piblaster = require('pi-blaster.js');
 // function angleToPercent(angle) {
