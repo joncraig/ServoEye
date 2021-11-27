@@ -21,11 +21,11 @@ setInterval(() => {
   motor24.servoWrite(pulseWidth);
   pulseWidth += increment;
   if (pulseWidth >= 2000) {
-    increment = -100;
+    increment = -10;
   } else if (pulseWidth <= 1000) {
-    increment = 100;
+    increment = 10;
   }
-}, 10);
+}, 1);
 // const raspi = require('raspi');
 // const pwm = require('raspi-soft-pwm');
 // let servo1,servo2,servo3,servo4;
