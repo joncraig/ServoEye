@@ -2,6 +2,7 @@
   "dependencies": {
     "pi-servo-blaster.js": "^0.0.3",
     "pi-blaster.js": "*",
+    "pigpio":"*"",
     "raspi": "^6.0.1",
     "raspi-soft-pwm": "^6.0.2"
   }
