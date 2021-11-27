@@ -5,6 +5,7 @@ const motor = new Gpio(11, {
 let pulseWidth = 1000;
 let increment = 100;
 setInterval(() => {
+console.log(pulseWidth);
   motor.servoWrite(pulseWidth);
   pulseWidth += increment;
   if (pulseWidth >= 2000) {
