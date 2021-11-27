@@ -2,7 +2,7 @@ const raspi = require('raspi');
 const pwm = require('raspi-soft-pwm');
 let servo1;
 raspi.init(() => {
-  servo1 = new pwm.SoftPWM('GPIO22');
+  servo1 = new pwm.SoftPWM('GPIO17');
   cycleServos();
 });
 
