@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/joncraig/ServoEye.git"
+    "url": "https://github.com/joncraig/ServoEye.git"
   },
   "author": "",
   "license": "ISC",
