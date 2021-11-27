@@ -2,8 +2,8 @@ const raspi = require('raspi');
 const pwm = require('raspi-soft-pwm');
 let servo1,servo2,servo3,servo4;
 raspi.init(() => {
-  servo1 = new pwm.SoftPWM('GPIO17');
-  servo2 = new pwm.SoftPWM('GPIO22');
+  servo1 = new pwm.SoftPWM('GPIO-17');
+  servo2 = new pwm.SoftPWM('GPIO-22');
   servo3 = new pwm.SoftPWM('GPIO23');
   servo4 = new pwm.SoftPWM('GPIO24');
   cycleServos();
