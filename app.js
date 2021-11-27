@@ -1,11 +1,11 @@
 const Gpio = require('pigpio').Gpio;
-const motor = new Gpio(17, {
+const motor17 = new Gpio(17, {
   mode: Gpio.OUTPUT
 });
-const motor = new Gpio(18, {
+const motor18 = new Gpio(18, {
   mode: Gpio.OUTPUT
 });
-const motor = new Gpio(19, {
+const motor19 = new Gpio(19, {
   mode: Gpio.OUTPUT
 });
 let pulseWidth = 1000;
