@@ -34,10 +34,10 @@ function angleToPercent(angle) {
 var curAngle = 0;
 var direction = 1;
 setInterval(() => {
-  piblaster.setP1Pwm(11, angleToPercent(curAngle)/100.0);
-  piblaster.setP1Pwm(15, angleToPercent(curAngle)/100.0);
-  piblaster.setP1Pwm(16, angleToPercent(curAngle)/100.0);
-  piblaster.setP1Pwm(18, angleToPercent(curAngle)/100.0);
+  piblaster.setPwm(11, angleToPercent(curAngle)/100.0);
+  piblaster.setPwm(15, angleToPercent(curAngle)/100.0);
+  piblaster.setPwm(16, angleToPercent(curAngle)/100.0);
+  piblaster.setPwm(18, angleToPercent(curAngle)/100.0);
   console.log("Setting angle at: ", curAngle, angleToPercent(curAngle) + "%");
   curAngle += direction;
   // Change direction when it exceeds the max angle.
