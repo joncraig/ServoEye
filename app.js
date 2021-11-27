@@ -2,19 +2,23 @@ const Gpio = require('pigpio').Gpio;
 const motor17 = new Gpio(17, {
   mode: Gpio.OUTPUT
 });
-const motor18 = new Gpio(22, {
+const motor22 = new Gpio(22, {
   mode: Gpio.OUTPUT
 });
-const motor19 = new Gpio(23, {
+const motor23 = new Gpio(23, {
+  mode: Gpio.OUTPUT
+});
+const motor24 = new Gpio(24, {
   mode: Gpio.OUTPUT
 });
 let pulseWidth = 1000;
 let increment = 100;
 setInterval(() => {
-console.log(pulseWidth);
-motor17.servoWrite(pulseWidth);
-motor18.servoWrite(pulseWidth);
-motor19.servoWrite(pulseWidth);
+  console.log(pulseWidth);
+  motor17.servoWrite(pulseWidth);
+  motor22.servoWrite(pulseWidth);
+  motor23.servoWrite(pulseWidth);
+  motor24.servoWrite(pulseWidth);
   pulseWidth += increment;
   if (pulseWidth >= 2000) {
     increment = -100;
