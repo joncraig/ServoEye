@@ -15,23 +15,23 @@ const motor25 = new Gpio(25, {
   mode: Gpio.OUTPUT
 });
 let pulseWidth = 1000;
-let min = 0;
-let max = 3000;
+let min = 500;
+let max = 2500;
 let increment = 1.0;
 let dir = 1;
 const step = 4.0;
 let last = Date.now();
-setInterval(() => {
+doStep();
+
+function doStep() {
   const delta = Date.now() - last;
   last = Date.now();
   if (pulseWidth >= 2500) {
     dir = -1;
     console.log(dir, pulseWidth)
-
   } else if (pulseWidth <= 500) {
     dir = 1;
     console.log(dir, pulseWidth)
-
   }
   const variStep = delta * step * dir;
   pulseWidth = Math.round(pulseWidth + variStep);
@@ -40,4 +40,5 @@ setInterval(() => {
   motor23.servoWrite(pulseWidth);
   motor24.servoWrite(pulseWidth);
   motor25.servoWrite(pulseWidth);
-}, 2);
+  setTimeout(doStep, delta / 10);
+}
