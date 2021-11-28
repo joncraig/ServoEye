@@ -32,4 +32,4 @@ setInterval(() => {
   } else if (pulseWidth <= 1000) {
     increment = delta * step;
   }
-}, 1000);
+}, 10);
