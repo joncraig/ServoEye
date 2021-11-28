@@ -23,17 +23,17 @@ let last = Date.now();
 setInterval(() => {
   const delta = Date.now() - last;
   last = Date.now();
+  if (pulseWidth >= 2500) {
+    dir = -1;
+  } else if (pulseWidth <= 500) {
+    dir = 1;
+  }
+  const variStep = delta * step * dir;
+  pulseWidth = Math.round(pulseWidth + variStep);
+  pulseWidth = Math.min(Math.max(pulseWidth, min), max);
+  console.log(delta, step, variStep, increment, pulseWidth)
   motor22.servoWrite(pulseWidth);
   motor23.servoWrite(pulseWidth);
   motor24.servoWrite(pulseWidth);
   motor25.servoWrite(pulseWidth);
-  pulseWidth = Math.round(pulseWidth + increment);
-  pulseWidth = Math.min(Math.max(pulseWidth, min), max);
-const variStep=delta*step;
-  if (pulseWidth >= 2500) {
-    increment = -variStep;
-  } else if (pulseWidth <= 500) {
-    increment = variStep;
-  }
-  console.log(delta,step,variStep, increment, pulseWidth)
 }, 10);
