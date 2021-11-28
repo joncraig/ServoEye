@@ -29,10 +29,11 @@ setInterval(() => {
   motor25.servoWrite(pulseWidth);
   pulseWidth = Math.round(pulseWidth + increment);
   pulseWidth = Math.min(Math.max(pulseWidth, min), max);
+const variStep=delta*step;
   if (pulseWidth >= 2500) {
-    increment = -delta * step;
+    increment = -variStep;
   } else if (pulseWidth <= 500) {
-    increment = delta * step;
+    increment = variStep;
   }
-  console.log(delta,step,delta*step, increment, pulseWidth)
+  console.log(delta,step,variStep, increment, pulseWidth)
 }, 10);
