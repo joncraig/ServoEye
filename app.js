@@ -12,6 +12,12 @@ osc.on('/step', (message, rinfo) => {
 osc.on('*', message => {
   console.log(message.args)
 })
+osc.on('open', () => {
+  // const message = new OSC.Message('/test', 12.221, 'hello')
+  // osc.send(message)
+  console.log('OSC OPEN');
+})
+
 osc.open({
   port: 3333
 })
