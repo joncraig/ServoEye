@@ -1,5 +1,5 @@
 const Gpio = require('pigpio').Gpio;
-import dgram from 'dgram';
+const dgram = require('dgram');
 const osc = require("osc-min");
 const sock = dgram.createSocket("udp4", function (msg, rinfo) {
   var error, error1;
