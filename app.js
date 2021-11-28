@@ -49,7 +49,7 @@ function degToPw(deg) {
   const minD = -90;
   const maxP = 2500;
   const maxD = 90;
-  let pulseWidth = Math.round(deg / (maxD - minD)) * (maxP - minP))
-pulseWidth = Math.min(Math.max(pulseWidth, minP), maxP);
-return pulseWidth;
+  let pulseWidth = Math.round(deg / (maxD - minD) * (maxP - minP))
+  pulseWidth = Math.min(Math.max(pulseWidth, minP), maxP);
+  return pulseWidth;
 }
