@@ -20,7 +20,7 @@ const step = 0.25;
 let last = Date.now();
 setInterval(() => {
   const delta = Date.now() - last;
-  let last = Date.now();
+  last = Date.now();
   motor17.servoWrite(pulseWidth);
   motor22.servoWrite(pulseWidth);
   motor23.servoWrite(pulseWidth);
