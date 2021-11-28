@@ -15,8 +15,8 @@ const motor25 = new Gpio(25, {
   mode: Gpio.OUTPUT
 });
 let pulseWidth = 1000;
-let min = 500;
-let max = 2500;
+let min = 750;
+let max = 2250;
 let increment = 1.0;
 let dir = 1;
 const step = 4.0;
