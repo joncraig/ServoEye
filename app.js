@@ -15,8 +15,8 @@ const motor25 = new Gpio(25, {
   mode: Gpio.OUTPUT
 });
 let pulseWidth = 1000;
-let min = 0;
-let max = 2000;
+let min = 500;
+let max = 2500;
 let increment = 1.0;
 let dir = 1;
 const step = 0.5;
@@ -36,6 +36,7 @@ function doStep() {
   const variStep = delta * step * dir;
   pulseWidth = Math.round(pulseWidth + variStep);
   pulseWidth = Math.min(Math.max(pulseWidth, min), max);
+console.log(pulseWidth);
   motor17.servoWrite(pulseWidth);
   motor22.servoWrite(pulseWidth);
   motor24.servoWrite(pulseWidth);
