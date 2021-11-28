@@ -40,5 +40,5 @@ function doStep() {
   motor23.servoWrite(pulseWidth);
   motor24.servoWrite(pulseWidth);
   motor25.servoWrite(pulseWidth);
-  setTimeout(doStep, delta / 10);
+  setTimeout(doStep, delta / 1);
 }
