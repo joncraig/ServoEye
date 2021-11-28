@@ -21,7 +21,7 @@ let last = Date.now();
 setInterval(() => {
   const delta = Date.now() - last;
   last = Date.now();
-  // motor17.servoWrite(pulseWidth);
+  console.log(pulseWidth)
   motor22.servoWrite(pulseWidth);
   motor23.servoWrite(pulseWidth);
   motor24.servoWrite(pulseWidth);
