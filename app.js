@@ -46,10 +46,10 @@ function doStep() {
 
 function degToPw(deg) {
   const minP = 500;
-  const minD = -90;
   const maxP = 2500;
+  const minD = -90;
   const maxD = 90;
-  let pulseWidth = Math.round(deg / (maxD - minD) * (maxP - minP))
+  let pulseWidth = Math.round(((deg - minD) / (maxD - minD)) * (maxP - minP)) + minP
   pulseWidth = Math.min(Math.max(pulseWidth, minP), maxP);
   return pulseWidth;
 }
