@@ -1,36 +1,21 @@
 const Gpio = require('pigpio').Gpio;
-const OSC = require('osc-js');
-const osc = new OSC()
-osc.on('/rate', (message, rinfo) => {
-  console.log(message.args)
-  console.log(rinfo)
-})
-osc.on('/step', (message, rinfo) => {
-  console.log(message.args)
-  console.log(rinfo)
-})
-osc.on('*', message => {
-  console.log(message.args)
-})
-osc.on('open', () => {
-  // const message = new OSC.Message('/test', 12.221, 'hello')
-  // osc.send(message)
-  console.log('OSC OPEN');
-})
-console.log('Try to open 3333');
-osc.open({
-  port: 3333
-})
-// var oscServer = new Server(3333, '0.0.0.0', () => {
-//   console.log('OSC Server is listening');
-// });
-// oscServer.on('message', function (msg) {
-//   console.log(`Message: ${msg}`);
-//   oscServer.close();
-// });
-// const motor17 = new Gpio(17, {
-//   mode: Gpio.OUTPUT
-// });
+const osc = require("osc");
+var oscPort = new osc.UDPPort({
+  localAddress: "127.0.0.1",
+  localPort: 3333,
+  metadata: true
+});
+// Listen for incoming OSC messages.
+// Open the socket.
+oscPort.open();
+oscPort.on("ready", () => {
+  debug('OSC Ready');
+});
+oscPort.on("message", (oscMsg, timeTag, info) => {
+  let address = oscMsg.address.toLowerCase();
+  let data = _.map(oscMsg.args, a => a.value);
+  console.log(address, data);
+});
 const motor17 = new Gpio(17, {
   mode: Gpio.OUTPUT
 });
