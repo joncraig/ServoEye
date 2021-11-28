@@ -1,4 +1,12 @@
+const Server = require('node-osc');
 const Gpio = require('pigpio').Gpio;
+var oscServer = new Server(3333, '0.0.0.0', () => {
+  console.log('OSC Server is listening');
+});
+oscServer.on('message', function (msg) {
+  console.log(`Message: ${msg}`);
+  oscServer.close();
+});
 // const motor17 = new Gpio(17, {
 //   mode: Gpio.OUTPUT
 // });
