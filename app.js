@@ -19,7 +19,7 @@ let min = -90.0;
 let max = 90.0;
 let increment = 1.0;
 let dir = 1;
-const step = 0.01;
+const step = 0.1;
 let last = Date.now() - 1000;
 doStep();
 
@@ -28,10 +28,8 @@ function doStep() {
   last = Date.now();
   if (deg >= max) {
     dir = -1;
-    console.log(dir, deg)
   } else if (deg <= min) {
     dir = 1;
-    console.log(dir, deg)
   }
   const variStep = delta * step * dir;
   deg = Math.round(deg + variStep);
