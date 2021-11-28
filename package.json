@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "node-osc": "^6.1.11",
+    "osc-js": "^2.1.2",
     "pigpio": "^3.3.1"
   },
   "name": "servoeye",
