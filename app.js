@@ -1,7 +1,7 @@
 const Gpio = require('pigpio').Gpio;
-const motor17 = new Gpio(17, {
-  mode: Gpio.OUTPUT
-});
+// const motor17 = new Gpio(17, {
+//   mode: Gpio.OUTPUT
+// });
 const motor22 = new Gpio(22, {
   mode: Gpio.OUTPUT
 });
@@ -21,7 +21,7 @@ let last = Date.now();
 setInterval(() => {
   const delta = Date.now() - last;
   last = Date.now();
-  motor17.servoWrite(pulseWidth);
+  // motor17.servoWrite(pulseWidth);
   motor22.servoWrite(pulseWidth);
   motor23.servoWrite(pulseWidth);
   motor24.servoWrite(pulseWidth);
@@ -32,4 +32,4 @@ setInterval(() => {
   } else if (pulseWidth <= 1000) {
     increment = delta * step;
   }
-}, 10);
+}, 1000);
