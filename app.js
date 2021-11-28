@@ -1,8 +1,7 @@
 const Gpio = require('pigpio').Gpio;
-console.log('req osc');
-const udp = require("udp");
+import dgram from 'dgram';
 const osc = require("osc-min");
-sock = udp.createSocket("udp4", function (msg, rinfo) {
+const sock = dgram.createSocket("udp4", function (msg, rinfo) {
   var error, error1;
   try {
     return console.log(osc.fromBuffer(msg));
