@@ -26,13 +26,16 @@ setInterval(() => {
   last = Date.now();
   if (pulseWidth >= 2500) {
     dir = -1;
+    console.log(dir, pulseWidth)
+
   } else if (pulseWidth <= 500) {
     dir = 1;
+    console.log(dir, pulseWidth)
+
   }
   const variStep = delta * step * dir;
   pulseWidth = Math.round(pulseWidth + variStep);
   pulseWidth = Math.min(Math.max(pulseWidth, min), max);
-  console.log(delta, step, variStep, increment, pulseWidth)
   motor22.servoWrite(pulseWidth);
   motor23.servoWrite(pulseWidth);
   motor24.servoWrite(pulseWidth);
