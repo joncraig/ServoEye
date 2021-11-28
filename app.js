@@ -36,9 +36,9 @@ function doStep() {
   const variStep = delta * step * dir;
   pulseWidth = Math.round(pulseWidth + variStep);
   pulseWidth = Math.min(Math.max(pulseWidth, min), max);
-  motor22.servoWrite(pulseWidth);
+  //motor22.servoWrite(pulseWidth);
   // motor23.servoWrite(pulseWidth);
   // motor24.servoWrite(pulseWidth);
-  // motor25.servoWrite(pulseWidth);
+   motor25.servoWrite(pulseWidth);
   setTimeout(doStep, 250);
 }
