@@ -17,7 +17,7 @@ osc.on('open', () => {
   // osc.send(message)
   console.log('OSC OPEN');
 })
-
+console.log('Try to open 3333');
 osc.open({
   port: 3333
 })
