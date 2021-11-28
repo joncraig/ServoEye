@@ -26,7 +26,7 @@ setInterval(() => {
   motor23.servoWrite(pulseWidth);
   motor24.servoWrite(pulseWidth);
   motor25.servoWrite(pulseWidth);
-  pulseWidth += increment;
+  pulseWidth = Math.round(pulseWidth + increment);
   if (pulseWidth >= 2000) {
     increment = -delta * step;
   } else if (pulseWidth <= 1000) {
