@@ -1,5 +1,5 @@
-// import { Server } from 'node-osc';
 const Gpio = require('pigpio').Gpio;
+const OSC = require('osc-js');
 const osc = new OSC()
 
 osc.on('/rate', (message, rinfo) => {
