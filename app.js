@@ -34,5 +34,5 @@ setInterval(() => {
   } else if (pulseWidth <= 500) {
     increment = delta * step;
   }
-  console.log(delta,step, increment, pulseWidth)
+  console.log(delta,step,delta*step, increment, pulseWidth)
 }, 10);
