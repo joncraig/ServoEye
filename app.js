@@ -16,7 +16,7 @@ const motor25 = new Gpio(25, {
 });
 let pulseWidth = 1000;
 let increment = 100;
-const step = 0.25;
+const step = 0.5;
 let last = Date.now();
 setInterval(() => {
   const delta = Date.now() - last;
@@ -32,4 +32,4 @@ setInterval(() => {
   } else if (pulseWidth <= 500) {
     increment = delta * step;
   }
-}, 2);
+}, 10);
