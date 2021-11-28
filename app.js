@@ -18,6 +18,7 @@ let pulseWidth = 1000;
 let min = 500;
 let max = 2500;
 let increment = 1.0;
+let dir = 1;
 const step = 1.0;
 let last = Date.now();
 setInterval(() => {
