@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "osc": "^2.4.2",
+    "osc-min": "^1.1.2",
     "pigpio": "^3.3.1"
   },
   "name": "servoeye",
