@@ -26,10 +26,10 @@ doStep();
 function doStep() {
   const delta = Date.now() - last;
   last = Date.now();
-  if (pulseWidth >= 2500) {
+  if (pulseWidth >= max) {
     dir = -1;
     console.log(dir, pulseWidth)
-  } else if (pulseWidth <= 500) {
+  } else if (pulseWidth <= min) {
     dir = 1;
     console.log(dir, pulseWidth)
   }
