@@ -1,22 +1,17 @@
 const Gpio = require('pigpio').Gpio;
 console.log('req osc');
-const osc = require("osc");
-console.log('udp');
-var oscPort = new osc.UDPPort({
-  localAddress: "127.0.0.1",
-  localPort: 3333,
-  metadata: true
+const udp = require("udp");
+const osc = require("osc-min");
+sock = udp.createSocket("udp4", function (msg, rinfo) {
+  var error, error1;
+  try {
+    return console.log(osc.fromBuffer(msg));
+  } catch (error1) {
+    error = error1;
+    return console.log("invalid OSC packet");
+  }
 });
-console.log('open');
-oscPort.open();
-oscPort.on("ready", () => {
-  console.log('OSC Ready');
-});
-oscPort.on("message", (oscMsg, timeTag, info) => {
-  let address = oscMsg.address.toLowerCase();
-  let data = _.map(oscMsg.args, a => a.value);
-  console.log(address, data);
-});
+sock.bind(3333);
 const motor17 = new Gpio(17, {
   mode: Gpio.OUTPUT
 });
