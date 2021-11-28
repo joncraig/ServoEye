@@ -1,5 +1,19 @@
 // import { Server } from 'node-osc';
 const Gpio = require('pigpio').Gpio;
+const osc = new OSC()
+
+osc.on('/rate', (message, rinfo) => {
+  console.log(message.args)
+  console.log(rinfo)
+})
+osc.on('/step', (message, rinfo) => {
+  console.log(message.args)
+  console.log(rinfo)
+})
+
+osc.on('*', message => {
+  console.log(message.args)
+})
 // var oscServer = new Server(3333, '0.0.0.0', () => {
 //   console.log('OSC Server is listening');
 // });
