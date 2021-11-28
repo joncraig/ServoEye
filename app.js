@@ -37,4 +37,4 @@ setInterval(() => {
   motor23.servoWrite(pulseWidth);
   motor24.servoWrite(pulseWidth);
   motor25.servoWrite(pulseWidth);
-}, 10);
+}, 2);
