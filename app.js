@@ -19,7 +19,7 @@ let min = -90.0;
 let max = 90.0;
 let increment = 1.0;
 let dir = 1;
-const step = 0.5;
+const step = 0.01;
 let last = Date.now() - 1000;
 doStep();
 
