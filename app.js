@@ -61,7 +61,7 @@ function doStep() {
   motor22.servoWrite(pulseWidth);
   motor24.servoWrite(pulseWidth);
   motor25.servoWrite(pulseWidth);
-  setTimeout(doStep, 1);
+  setTimeout(doStep, 100);
 }
 
 function degToPw(deg) {
