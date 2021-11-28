@@ -5,7 +5,7 @@ const Gpio = require('pigpio').Gpio;
 const motor22 = new Gpio(22, {
   mode: Gpio.OUTPUT
 });
-const motor23 = new Gpio(23, {
+const motor17 = new Gpio(17, {
   mode: Gpio.OUTPUT
 });
 const motor24 = new Gpio(24, {
@@ -37,7 +37,7 @@ function doStep() {
   pulseWidth = Math.round(pulseWidth + variStep);
   pulseWidth = Math.min(Math.max(pulseWidth, min), max);
   //motor22.servoWrite(pulseWidth);
-   motor23.servoWrite(pulseWidth);
+   motor17.servoWrite(pulseWidth);
   // motor24.servoWrite(pulseWidth);
    //motor25.servoWrite(pulseWidth);
   setTimeout(doStep, 250);
