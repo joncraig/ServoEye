@@ -15,11 +15,11 @@ const motor25 = new Gpio(25, {
   mode: Gpio.OUTPUT
 });
 let pulseWidth = 1000;
-let min = 850;
-let max = 2150;
+let min = 0;
+let max = 2000;
 let increment = 1.0;
 let dir = 1;
-const step = 4.0;
+const step = 0.5;
 let last = Date.now() - 1000;
 doStep();
 
@@ -41,4 +41,11 @@ function doStep() {
   motor24.servoWrite(pulseWidth);
   motor25.servoWrite(pulseWidth);
   setTimeout(doStep, 250);
+}
+
+function degToPw(deg) {
+  const minP = 500;
+  const minD = -90;
+  const maxP = 2000;
+  const maxD = 500;
 }
