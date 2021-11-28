@@ -30,6 +30,9 @@ function onMessage(msg) {
   if (msg.address == '/rate') {
     rate = msg.args[0].value;
   }
+  if (msg.address == '/deg') {
+    deg = msg.args[0].value;
+  }
 }
 const motor17 = new Gpio(17, {
   mode: Gpio.OUTPUT
@@ -49,13 +52,13 @@ doStep();
 function doStep() {
   const delta = Date.now() - last;
   last = Date.now();
-  if (deg >= max) {
-    dir = -1;
-  } else if (deg <= min) {
-    dir = 1;
-  }
-  const variStep = delta * step * dir;
-  deg = Math.round(deg + variStep);
+  // if (deg >= max) {
+  //   dir = -1;
+  // } else if (deg <= min) {
+  //   dir = 1;
+  // }
+  // const variStep = delta * step * dir;
+  // deg = Math.round(deg + variStep);
   const pulseWidth = degToPw(deg);
   // console.log(deg, pulseWidth);
   motor17.servoWrite(pulseWidth);
