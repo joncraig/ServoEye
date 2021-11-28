@@ -1,15 +1,16 @@
 const Gpio = require('pigpio').Gpio;
+console.log('req osc');
 const osc = require("osc");
+console.log('udp');
 var oscPort = new osc.UDPPort({
   localAddress: "127.0.0.1",
   localPort: 3333,
   metadata: true
 });
-// Listen for incoming OSC messages.
-// Open the socket.
+console.log('open');
 oscPort.open();
 oscPort.on("ready", () => {
-  debug('OSC Ready');
+  console.log('OSC Ready');
 });
 oscPort.on("message", (oscMsg, timeTag, info) => {
   let address = oscMsg.address.toLowerCase();
