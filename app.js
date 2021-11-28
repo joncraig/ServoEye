@@ -1,4 +1,4 @@
-const Server = require('node-osc');
+import { Server } from 'node-osc';
 const Gpio = require('pigpio').Gpio;
 var oscServer = new Server(3333, '0.0.0.0', () => {
   console.log('OSC Server is listening');
