@@ -20,7 +20,7 @@ let max = 2150;
 let increment = 1.0;
 let dir = 1;
 const step = 4.0;
-let last = Date.now();
+let last = Date.now()-1000;
 doStep();
 
 function doStep() {
