@@ -1,12 +1,12 @@
 {
   "dependencies": {
+    "node-osc": "^6.1.11",
     "raspi": "^6.0.1",
     "raspi-soft-pwm": "^6.0.2"
   },
   "name": "servoeye",
   "version": "1.0.0",
   "main": "app.js",
-  "devDependencies": {},
   "scripts": {
     "start": "sudo $(which node) app.js"
   },
