@@ -36,12 +36,12 @@ function doStep() {
   const variStep = delta * step * dir;
   deg = Math.round(deg + variStep);
   const pulseWidth = degToPw(deg);
-  console.log(pulseWidth);
+  console.log(deg, pulseWidth);
   motor17.servoWrite(pulseWidth);
   motor22.servoWrite(pulseWidth);
   motor24.servoWrite(pulseWidth);
   motor25.servoWrite(pulseWidth);
-  setTimeout(doStep, 250);
+  setTimeout(doStep, 500);
 }
 
 function degToPw(deg) {
