@@ -21,7 +21,7 @@ let increment = 100;
 const step = 1;
 let last = Date.now();
 setInterval(() => {
-  const delta = Date.now() - last;
+  const delta = 1.0 * Date.now() - last;
   last = Date.now();
   motor22.servoWrite(pulseWidth);
   motor23.servoWrite(pulseWidth);
