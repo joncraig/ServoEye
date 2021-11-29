@@ -10,7 +10,8 @@ const sock = dgram.createSocket("udp4", function (msg, rinfo) {
     return console.log("invalid OSC packet");
   }
 });
-let deg = 0.0;
+let degX = 0.0;
+let degY = 0.0;
 let min = -90.0;
 let max = 90.0;
 let increment = 1.0;
@@ -29,7 +30,10 @@ function onMessage(msg) {
   } else if (msg.address == '/rate') {
     rate = msg.args[0].value;
   } else if (msg.address == '/deg') {
-    deg = msg.args[0].value;
+    degX = msg.args[0].value;
+  } else if (msg.address == '/eyeDirection') {
+    degX = msg.args[0].value;
+    degY = msg.args[1].value;
   } else {
     console.log(msg);
   }
@@ -52,28 +56,19 @@ doStep();
 function doStep() {
   const delta = Date.now() - last;
   last = Date.now();
-  // if (deg >= max) {
-  //   dir = -1;
-  // } else if (deg <= min) {
-  //   dir = 1;
-  // }
-  // const variStep = delta * step * dir;
-  // deg = Math.round(deg + variStep);
-  const pulseWidth = degToPw(deg);
-  // console.log(deg, pulseWidth);
-  motor17.servoWrite(pulseWidth);
-  motor22.servoWrite(pulseWidth);
-  motor24.servoWrite(pulseWidth);
-  motor25.servoWrite(pulseWidth);
+  motor17.servoWrite(degXToPw(degX));
+  motor22.servoWrite(degXToPw(degY));
+  // motor24.servoWrite(pulseWidth);
+  // motor25.servoWrite(pulseWidth);
   setTimeout(doStep, rate);
 }
 
-function degToPw(deg) {
+function degXToPw(degX) {
   const minP = 500;
   const maxP = 2500;
   const minD = -90;
   const maxD = 90;
-  let pulseWidth = Math.round(((deg - minD) / (maxD - minD)) * (maxP - minP)) + minP
+  let pulseWidth = Math.round(((degX - minD) / (maxD - minD)) * (maxP - minP)) + minP
   pulseWidth = Math.min(Math.max(pulseWidth, minP), maxP);
   return pulseWidth;
 }
