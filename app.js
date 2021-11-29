@@ -17,7 +17,7 @@ let max = 90.0;
 let increment = 1.0;
 let dir = 1;
 let step = 0.1;
-let rate = 100;
+let rate = 10;
 sock.bind(3333);
 
 function onMessage(msg) {
@@ -25,13 +25,14 @@ function onMessage(msg) {
     console.log(msg);
     return;
   }
-  if (msg.address == '/step') {
-    step = msg.args[0].value;
-  } else if (msg.address == '/rate') {
-    rate = msg.args[0].value;
-  } else if (msg.address == '/deg') {
-    degX = msg.args[0].value;
-  } else if (msg.address == '/eyeDirection') {
+  // if (msg.address == '/step') {
+  //   step = msg.args[0].value;
+  // } else if (msg.address == '/rate') {
+  //   rate = msg.args[0].value;
+  // } else if (msg.address == '/deg') {
+  //   degX = msg.args[0].value;
+  // } else
+  if (msg.address == '/eyeDirection') {
     degX = msg.args[0].value;
     degY = msg.args[1].value;
   } else {
