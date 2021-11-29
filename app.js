@@ -26,12 +26,12 @@ function onMessage(msg) {
   }
   if (msg.address == '/step') {
     step = msg.args[0].value;
-  }
-  if (msg.address == '/rate') {
+  } else if (msg.address == '/rate') {
     rate = msg.args[0].value;
-  }
-  if (msg.address == '/deg') {
+  } else if (msg.address == '/deg') {
     deg = msg.args[0].value;
+  } else {
+    console.log(msg);
   }
 }
 const motor17 = new Gpio(17, {
