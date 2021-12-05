@@ -27,12 +27,12 @@ function onMessage(msg) {
   }
   // if (msg.address == '/step') {
   //   step = msg.args[0].value;
-  // } else if (msg.address == '/rate') {
-  //   rate = msg.args[0].value;
-  // } else if (msg.address == '/deg') {
-  //   degX = msg.args[0].value;
   // } else
-  if (msg.address == '/eyeDirection') {
+  if (msg.address == '/rate') {
+    rate = msg.args[0].value;
+    // } else if (msg.address == '/deg') {
+    //   degX = msg.args[0].value;
+  } else if (msg.address == '/eyeDirection') {
     degX = msg.args[0].value;
     degY = msg.args[1].value;
   } else {
